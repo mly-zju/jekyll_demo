@@ -7,10 +7,13 @@ title: 我的Blog
 <a href="{{site.baseurl}}/test.html">Click</a>
 <ul>
 　　{% for post in paginator.posts %}
-		{% if post.tags== 11 %}
-　　　　<li>{{ post.date | date_to_string }} <a href="{{site.baseurl}}{{ post.url }}">{{ post.title }} {{post.tags}}</a>
-		{{ post.excerpt }}		</li>
-		{% endif %}
+　　　　<li>{{ post.date | date_to_string }} <a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a>
+        {{ post.excerpt }}</li>
+        {% if post.description %}
+        <script>
+          console.log('h');
+        </script>
+        {% endif %}
 　　{% endfor %}
 </ul>
 

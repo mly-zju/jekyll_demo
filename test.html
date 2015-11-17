@@ -1,10 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-</head>
-<body>
-	<p>Just for test!</p>
-</body>
-</html>
+---
+layout: default
+title: 我的Blog
+---
+<h2>{{ page.title }}</h2>
+<p class="test">最新文章</p>
+<a href="{{site.baseurl}}/test.html">Click</a>
+<ul>
+　　{% for post in paginator.posts limit:2 %}
+　　　　<li>{{ post.date | date_to_string }} <a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a>
+        {{ post.excerpt }}</li>
+　　{% endfor %}
+</ul>
+
+
+<div id="post-pagination" class="pagination">
+  {% if paginator.previous_page %}
+    <p class="previous">
+      {% if paginator.previous_page == 1 %}
+        <a href="{{ site.baseurl }}">Previous</a>
+      {% else %}
+        <a href="{{ site.baseurl }}{{ paginator.previous_page_path }}">Previous</a>
+      {% endif %}
+    </p>
+  {% else %}
+    <p class="previous disabled">
+      <span>Previous</span>
+    </p>
+  {% endif %}
+
+  <ul class="pages">
+    <li class="page">
+      {% if paginator.page == 1 %}
+        <span class="current-page">1</span>
+      {% else %}
+        <a href="{{ site.baseurl }}/index.html">1</a>
+      {% endif %}
+    </li>
+
+    {% for count in (2..paginator.total_pages) %}
+      <li class="page">
+        {% if count == paginator.page %}
+          <span class="current-page">{{ count }}</span>
+        {% else %}
+          <a href="{{ site.baseurl }}/page{{ count }}/index.html">{{ count }}</a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+
+  {% if paginator.next_page %}
+    <p class="next">
+      <a href="{{ site.baseurl }}{{ paginator.next_page_path }}/index.html">Next</a>
+    </p>
+  {% else %}
+    <p class="next disabled">
+      <span>Next</span>
+    </p>
+  {% endif %}
+
+</div>
