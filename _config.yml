@@ -1,4 +1,4 @@
-baseurl: /Web develop/jekyll_demo/_site
+baseurl: /jekyll_demo
 paginate: 5
 paginate_path: "page:num"
 gems: [jekyll-paginate]
