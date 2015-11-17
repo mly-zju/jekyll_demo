@@ -18,9 +18,9 @@ title: 我的Blog
   {% if paginator.previous_page %}
     <p class="previous">
       {% if paginator.previous_page == 1 %}
-        <a href="{{ site.baseurl }}{{ paginator.previous_page_path }}/index.html">Previous</a>
+        <a href="{{ site.baseurl }}{{ paginator.previous_page_path }}">Previous</a>
       {% else %}
-        <a href="{{ site.baseurl }}{{ paginator.previous_page_path }}/index.html">Previous</a>
+        <a href="{{ site.baseurl }}{{ paginator.previous_page_path }}">Previous</a>
       {% endif %}
     </p>
   {% else %}
